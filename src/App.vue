@@ -1,10 +1,9 @@
 <template>
   <div  class="container">
-      <router-view></router-view>
 
  <article class="message is-primary" style="border: 1px solid #ebfffc;">
   <div class="message-header">
-  <span class="tag is-info" style="    position: absolute;
+  <span class="tag is-info" style="position: absolute;
     left: 0;
     top: 0;">STEP1</span>
 
@@ -26,14 +25,10 @@
     </div>
     <p>-生年月日-</p>
     <div style="display:flex;">
-                      <span v-if="confirmMode">
-                        <span v-if="year && month && day">
-                            {{year}}年{{month}}月{{day}}日
-                        </span>
-                    </span>
+
               <div class="select" style="display:flex;">
 
-                        <select name="year" v-model="year">
+                        <select name="year">
                             <option value=""></option>
                             <option value="1901">1901</option>
                             <option value="1902">1902</option>
@@ -161,7 +156,7 @@
             <div  class="select" style="display:flex;">
 
 
-                        <select name="month" v-model="month">
+                        <select name="month">
                             <option value=""></option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -180,7 +175,7 @@
             </div>
             <div class="select" style="display:flex;">
 
-                        <select name="day" v-model="day">
+                        <select name="day">
                             <option value=""></option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -228,7 +223,7 @@
     <router-link to="/Confirm">Go to Bar</router-link>
   </p>
 </div>
-    <router-view/>
+      <router-view></router-view>
 
   </div>
 

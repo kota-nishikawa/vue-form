@@ -1,13 +1,13 @@
-import Vue from "vue"
-import Router from 'vue-router'
+import Vue from 'vue'
+import VueRouter from "vue-router"
 
-Vue.use(Router)
+Vue.use(VueRouter)
 
-import Index from "./index.vue"
-import form from "./form.vue"
 import confirm from "./confirm.vue"
+import index from "./index.vue"
+import form from "./form.vue"
 
-export default new Router({
+export default new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
@@ -18,6 +18,14 @@ export default new Router({
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "about" */ './index.vue')
+    },
+    {
+      path: '/form',
+      name: 'form',
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "about" */ './form.vue')
     },
     {
       path: '/confirm',
