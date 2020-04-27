@@ -87,7 +87,7 @@ export default {
 
 
 <style lang="scss">
-@import "../node_modules/bulma/bulma.sass";
+
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
