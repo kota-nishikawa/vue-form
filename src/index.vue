@@ -81,9 +81,12 @@ export default {
             year: {
                 type: Number
             }
-        },
+        }
 
 };
+
+
+
 </script>
 
 

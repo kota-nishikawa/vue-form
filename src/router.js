@@ -1,6 +1,6 @@
 import Vue from 'vue'
-import VueRouter from "vue-router"
 
+import VueRouter from "vue-router"
 
 import confirm from "./confirm.vue"
 import index from "./index.vue"
