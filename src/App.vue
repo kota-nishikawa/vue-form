@@ -20,9 +20,6 @@ export default {
 };
 
 
-store.commit('increment')
-
-console.log(store.state.count) // -> 1
 </script>
 
 

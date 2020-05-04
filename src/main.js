@@ -1,33 +1,20 @@
 import Vue from 'vue'
+import store from '@/store.js'
 import App from './App.vue'
-import 'es6-promise/auto'
-import Vuex from 'vuex'
+
 import router from './router.js'
 import "../node_modules/bulma/bulma.sass";
 
 Vue.config.productionTip = false
-Vue.use(Vuex)
+
+
+console.log(store.state)
 
 
 new Vue({
   router,
   store,
-  render: h => h(App),
-    computed: {
-        count() {
-            return store.state.count
-        },
-    }
+  render: h => h(App)
 }).$mount('#app')
 
 
-const store = new Vuex.Store({
-  state: {
-    count: 10
-  },
-  mutations: {
-    increment (state) {
-      state.count++
-    }
-  }
-})

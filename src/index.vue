@@ -1,6 +1,8 @@
 <template>
   <div  class="container">
-
+  <div>
+    <p>{{ countNum }}</p>
+  </div>
  <article class="message is-primary" style="border: 1px solid #ebfffc;">
   <div class="message-header">
   <span class="tag is-info" style="position: absolute;
@@ -15,11 +17,11 @@
     <p>-性別-</p>
     <div class="control">
       <label class="radio">
-        <input type="radio" name="sex">
+        <input type="radio" name="sex" v-on:click="clickPlus">
         男性
       </label>
       <label class="radio">
-        <input type="radio" name="sex">
+        <input type="radio" name="sex" v-on:click="clickMinus">
         女性
       </label>
     </div>
@@ -27,7 +29,8 @@
     <div style="display:flex;">
 
               <div class="select" style="display:flex;">
-      <select type="number" name="year" v-model.number="inputYear">
+
+      <select type="number" name="year" v-model.number="inputYear"  @change="updateBox">
             <option v-for="(n, key) in 70"  :key="key" v-bind:value="n + 1950">{{ n + 1950 }}</option>
         </select>
                         <div style="display: inline-block;">年</div>
@@ -72,21 +75,34 @@ export default {
     }
 
   },
+  computed: {
+    countNum() {
+      return this.$store.getters.count
+    }
+  },
   methods: {
     clear () {
       this.msg = ''
+    },
+    clickPlus() {
+      this.$store.dispatch('increment')
+    },
+    clickMinus() {
+      this.$store.dispatch('decrement')
+    },
+    updateBox(e) {
+      console.log(e.target.value)
+      const id = e.target.value;
+      this.$store.commit('changeYourBox', id);
     }
   },
-          props: {
-            year: {
-                type: Number
-            }
-        }
+  props: {
+    year: {
+        type: Number
+    }
+  },
 
 };
-
-
-
 </script>
 
 

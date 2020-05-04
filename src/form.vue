@@ -1,5 +1,6 @@
 <template>
   <div  class="container">
+    <p>{{ countNum }}</p>
 
  <article class="message is-primary" style="border: 1px solid #ebfffc;">
   <div class="message-header">
@@ -76,6 +77,11 @@ export default {
     }
 
 
+  },
+  computed: {
+    countNum() {
+      return this.$store.getters.count
+    }
   },
   methods: {
     clear () {
