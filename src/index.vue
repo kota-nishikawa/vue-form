@@ -30,14 +30,14 @@
 
               <div class="select" style="display:flex;">
 
-      <select type="number" name="year" v-model.number="inputYear"  @change="updateBox">
+      <select type="number" name="year" v-model.number="inputYear"  @change="updateBox" >
             <option v-for="(n, key) in 70"  :key="key" v-bind:value="n + 1950">{{ n + 1950 }}</option>
         </select>
                         <div style="display: inline-block;">年</div>
             </div>
             <div  class="select" style="display:flex;">
 
-      <select type="number" name="month" v-model.number="inputYear">
+      <select type="number" name="month" v-model.number="inputMonth">
             <option v-for="(n, key) in 12"  :key="key" v-bind:value="n + 0">{{ n + 0 }}</option>
         </select>
                         <div style="display: inline-block;">月</div>
@@ -45,7 +45,7 @@
             <div class="select" style="display:flex;">
 
 
-      <select type="number" name="day" v-model.number="inputYear">
+      <select type="number" name="day" v-model.number="inputDay">
             <option v-for="(n, key) in 31"  :key="key" v-bind:value="n + 0">{{ n + 0 }}</option>
         </select>
                       <div style="display: inline-block;">日</div>
@@ -70,7 +70,9 @@ export default {
   data () {
     return {
       msg: 'Hellow',
-        inputYear: this.year
+      inputYear: this.year,
+      inputMonth: this.month,
+      inputDay: this.day
 
     }
 
@@ -92,8 +94,8 @@ export default {
     },
     updateBox(e) {
       console.log(e.target.value)
-      const id = e.target.value;
-      this.$store.commit('changeYourBox', id);
+      const year = e.target.value;
+      this.$store.commit('changeYourBox', year);
     }
   },
   props: {

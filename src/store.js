@@ -19,13 +19,12 @@ const store = new Vuex.Store({
     decrement( { commit }) {
       commit('decrement')
     }
-
   },
   mutations: {
     // カウントアップするミューテーションを登録
     increment: state => state.count = '男',
     decrement: state => state.count = '女',
-    changeYourBox : state => state.year = id
+    changeYourBox : state => state.year
   }
 })
 

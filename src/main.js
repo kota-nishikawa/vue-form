@@ -8,7 +8,7 @@ import "../node_modules/bulma/bulma.sass";
 Vue.config.productionTip = false
 
 
-console.log(store.state)
+console.log(store.state.year)
 
 
 new Vue({
