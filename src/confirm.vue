@@ -3,28 +3,54 @@
 
  <article class="message is-primary" style="border: 1px solid #ebfffc;">
   <div class="message-header">
-  <span class="tag is-info" style="position: absolute;
-    left: 0;
-    top: 0;">STEP3</span>
 
-    <p style="padding: 0px 0 0 40px;">相談内容を入力してください。</p>
+    <p style="padding: 0px 0 0 40px;">以下の内容をご確認ください。</p>
   </div>
    <div class="card-content" style="background:#FFFFFF; ">
     <div class="content">
 
    <p>-相談内容-</p>
-    <div class="control">
 
-        <textarea  name="sex"  class="textarea"></textarea>
+    <div class="field is-grouped is-grouped-centered">
+    {{gender}}
+    </div>
 
+
+   <p>-生年月日-</p>
+
+    <div class="field is-grouped is-grouped-centered">
+    {{birthyear}}年{{birthmonth}}月{{birthday}}日
+    </div>
+
+    <p>現在生命保険に加入されていますか？</p>
+
+    <div class="field is-grouped is-grouped-centered">
+    {{assign}}
+    </div>
+    <p>現在入院中ですか。または、直近3ヶ月以内に医師の診察・検査結果、入院・手術、を勧められたことはありますか？</p>
+
+    <div class="field is-grouped is-grouped-centered">
+        {{treemonth}}
+
+    </div>
+    <p>過去5年以内に、病気や怪我で、手術を受けたことまたは継続して7日以上の入院をしたことがありますか？</p>
+
+    <div class="field is-grouped is-grouped-centered">
+        {{fiveyears}}
+    </div>
+
+
+   <p>-相談内容-</p>
+
+    <div class="field is-grouped is-grouped-centered">
+    {{updatetext}}
     </div>
 
   </div>
   </div>
 </article>
 <div class="field is-grouped is-grouped-centered">
-    <router-link to="/form" class="button is-primary">前へ</router-link>
-    <router-link to="/confirm" class="button is-primary">次へ</router-link>
+    <router-link to="/consultation" class="button is-primary">前へ</router-link>
 
 </div>
       <router-view></router-view>
@@ -42,6 +68,34 @@ export default {
     }
 
   },
+  computed: {
+    gender() {
+      return this.$store.getters.gender
+    },
+    birthyear() {
+      return this.$store.getters.year
+    },
+
+    birthmonth() {
+      return this.$store.getters.month
+    },
+    birthday() {
+      return this.$store.getters.day
+    },
+
+    assign() {
+      return this.$store.getters.assign
+    },
+    treemonth() {
+      return this.$store.getters.treeyear
+    },
+    fiveyears() {
+      return this.$store.getters.sevenweek
+    },
+    updatetext() {
+      return this.$store.getters.updatetext
+    }
+  },
   methods: {
     clear () {
       this.msg = ''
@@ -52,7 +106,6 @@ export default {
 
 
 <style lang="scss">
-@import "../node_modules/bulma/bulma.sass";
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

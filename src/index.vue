@@ -30,14 +30,14 @@
 
               <div class="select" style="display:flex;">
 
-      <select type="number" name="year" v-model.number="inputYear"  @change="updateBox" >
-            <option v-for="(n, key) in 70"  :key="key" v-bind:value="n + 1950">{{ n + 1950 }}</option>
+      <select type="number" name="year" v-model.number="inputYear"  @change="updateYear" >
+            <option v-for="(n, key) in 70"  :key="key" v-bind:value="n + 1950" >{{ n + 1950 }}</option>
         </select>
                         <div style="display: inline-block;">年</div>
             </div>
             <div  class="select" style="display:flex;">
 
-      <select type="number" name="month" v-model.number="inputMonth">
+      <select type="number" name="month" v-model.number="inputMonth" @change="updateMonth">
             <option v-for="(n, key) in 12"  :key="key" v-bind:value="n + 0">{{ n + 0 }}</option>
         </select>
                         <div style="display: inline-block;">月</div>
@@ -45,7 +45,7 @@
             <div class="select" style="display:flex;">
 
 
-      <select type="number" name="day" v-model.number="inputDay">
+      <select type="number" name="day" v-model.number="inputDay" @change="updateDay">
             <option v-for="(n, key) in 31"  :key="key" v-bind:value="n + 0">{{ n + 0 }}</option>
         </select>
                       <div style="display: inline-block;">日</div>
@@ -79,8 +79,9 @@ export default {
   },
   computed: {
     countNum() {
-      return this.$store.getters.count
+      return this.$store.getters.year
     }
+
   },
   methods: {
     clear () {
@@ -92,11 +93,19 @@ export default {
     clickMinus() {
       this.$store.dispatch('decrement')
     },
-    updateBox(e) {
-      console.log(e.target.value)
+    updateYear(e) {
       const year = e.target.value;
-      this.$store.commit('changeYourBox', year);
+      this.$store.commit('updateYear', year);
+    },
+    updateMonth(e) {
+      const month = e.target.value;
+      this.$store.commit('updateMonth', month);
+    },
+    updateDay(e) {
+      const day = e.target.value;
+      this.$store.commit('updateDay', day);
     }
+
   },
   props: {
     year: {
