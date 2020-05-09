@@ -1,7 +1,5 @@
 <template>
   <div  class="container">
-    <p>{{ countNum }}</p>
-
  <article class="message is-primary" style="border: 1px solid #ebfffc;">
   <div class="message-header">
    <span class="tag is-info" style="position: absolute;left: 0;top: 0;">STEP2</span>
@@ -12,13 +10,11 @@
 
     <div class="control"  v-if="show>0">
     <p>現在生命保険に加入されていますか？</p>
-
-      <label class="radio">
-        <input type="radio" name="insurance"  @click="show++">
+    <label class="radio"><input type="radio" name="insurance" @click="show++" @input="updateAssign" value="はい">
         はい
       </label>
       <label class="radio">
-        <input type="radio" name="insurance"  @click="show++">
+        <input type="radio" name="insurance" @click="show++" @input="updateAssign" value="いいえ">
         いいえ
       </label>
     </div>
@@ -27,11 +23,11 @@
     <p>現在入院中ですか。または、直近3ヶ月以内に医師の診察・検査結果、入院・手術、を勧められたことはありますか？</p>
     <div style="display:flex;">
       <label class="radio">
-        <input type="radio" name="latest" @click="show++">
+        <input type="radio" @input="updateTreeYear" name="latest" @click="show++" value="はい">
         はい
       </label>
       <label class="radio">
-        <input type="radio" name="latest" @click="show++">
+        <input type="radio"  @input="updateTreeYear" name="latest" @click="show++" value="いいえ">
         いいえ
       </label>
             </div>
@@ -41,11 +37,11 @@
     <p>過去5年以内に、病気や怪我で、手術を受けたことまたは継続して7日以上の入院をしたことがありますか？</p>
     <div style="display:flex;">
       <label class="radio">
-        <input type="radio" name="long" @click="show++">
+        <input type="radio" name="long" @click="show++"  @input="updateSevenWeek"  value="はい" >
         はい
       </label>
       <label class="radio">
-        <input type="radio" name="long" @click="show++">
+        <input type="radio" name="long" @click="show++" @input="updateSevenWeek" value="いいえ" >
         いいえ
       </label>
             </div>
@@ -57,7 +53,7 @@
 </article>
 <div class="field is-grouped is-grouped-centered">
     <router-link to="/"  class="button is-primary">前へ</router-link>
-    <router-link to="/confirm"  class="button is-primary">次へ</router-link>
+    <router-link to="/consultation"  class="button is-primary">次へ</router-link>
 
 </div>
 
@@ -72,7 +68,7 @@ export default {
 
     return {
       msg: 'Hellow',
-      show: 1,
+      show: 1
 
     }
 
@@ -80,12 +76,26 @@ export default {
   },
   computed: {
     countNum() {
-      return this.$store.getters.count
+      return this.$store.getters.year
     }
   },
   methods: {
     clear () {
       this.msg = ''
+    },
+    updateAssign(e) {
+     const assign = e.target.value;
+      this.$store.commit('updateAssign', assign);
+    },
+    updateTreeYear(e) {
+     const assign = e.target.value;
+      this.$store.commit('updateTreeYear', assign);
+
+    },
+    updateSevenWeek(e) {
+     const assign = e.target.value;
+      this.$store.commit('updateSevenWeek', assign);
+
     }
   }
 };
