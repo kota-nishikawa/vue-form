@@ -19,7 +19,7 @@
    <p>-生年月日-</p>
 
     <div class="field is-grouped is-grouped-centered">
-    {{birthyear}}年{{birthmonth}}月{{birthday}}日
+    {{year}}年{{month}}月{{day}}日
     </div>
 
     <p>現在生命保険に加入されていますか？</p>
@@ -30,13 +30,13 @@
     <p>現在入院中ですか。または、直近3ヶ月以内に医師の診察・検査結果、入院・手術、を勧められたことはありますか？</p>
 
     <div class="field is-grouped is-grouped-centered">
-        {{treemonth}}
+        {{treeyear}}
 
     </div>
     <p>過去5年以内に、病気や怪我で、手術を受けたことまたは継続して7日以上の入院をしたことがありますか？</p>
 
     <div class="field is-grouped is-grouped-centered">
-        {{fiveyears}}
+        {{sevenweek}}
     </div>
 
 
@@ -60,6 +60,7 @@
 </template>
 
 <script>
+import { mapState} from 'vuex'
 
 export default {
   data () {
@@ -68,34 +69,16 @@ export default {
     }
 
   },
-  computed: {
-    gender() {
-      return this.$store.getters.gender
-    },
-    birthyear() {
-      return this.$store.getters.year
-    },
-
-    birthmonth() {
-      return this.$store.getters.month
-    },
-    birthday() {
-      return this.$store.getters.day
-    },
-
-    assign() {
-      return this.$store.getters.assign
-    },
-    treemonth() {
-      return this.$store.getters.treeyear
-    },
-    fiveyears() {
-      return this.$store.getters.sevenweek
-    },
-    updatetext() {
-      return this.$store.getters.updatetext
-    }
-  },
+  computed:mapState([
+        'gender',
+        'year',
+        'month',
+        'day',
+        'assign',
+        'treeyear',
+        'sevenweek',
+        'updatetext'
+  ]),
   methods: {
     clear () {
       this.msg = ''
